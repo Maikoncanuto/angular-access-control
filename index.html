@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>DashBoard</title>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <link rel="stylesheet" href="app.css">
+    </head>
+
+    <body ng-app="myApp">
+
+        <div ng-controller="PageController">
+            <header>
+                <ul>
+                    <li class="active"><a href="#!/home">Home</a></li>
+                    <li ng-show="$root.usuarioLogado != null"><a href="#!/livros">Livros</a></li>
+                    <li ng-show="$root.usuarioLogado.admin == true"><a href="#!/usuarios">Usuarios</a></li>
+                    <li ng-show="$root.usuarioLogado == null" style="float:right"><a href="#!/login">Login</a></li>
+                    <li ng-show="$root.usuarioLogado != null" style="float:right"><a ng-click="logout()">Logout</a></li>
+                </ul>
+            </header>
+        
+            <!-- Template -->
+            <div class="conteudo" ng-view=""></div>
+        </div>
+
+
+        <!-- Config -->
+        <script src="angular/node_modules/angular/angular.js"></script>
+        <script src="angular/node_modules/angular-route/angular-route.js"></script>
+        <script src="angular/node_modules/angular-cookies/angular-cookies.js"></script>
+        <script src="app.js"></script>
+
+        <!-- Controllers -->
+        <script src="controllers/AcessoNegadoController.js"></script>
+        <script src="controllers/HomeController.js"></script>
+        <script src="controllers/LivroController.js"></script>
+        <script src="controllers/LoginController.js"></script>
+        <script src="controllers/PageController.js"></script>
+        <script src="controllers/UsuarioController.js"></script>
+
+        <!-- Services -->
+        <script src="services/UsuarioService.js"></script>
+    </body>
+</html>
